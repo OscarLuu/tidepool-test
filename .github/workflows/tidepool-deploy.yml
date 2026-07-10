@@ -29,20 +29,20 @@ jobs:
         env:
           DOCKER_BUILDKIT: "1"
         run: |
-          docker pull us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-project:latest || true
+          docker pull us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-proof-of-concept:latest || true
           docker build \
-            --cache-from=us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-project:latest \
-            -t us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-project:${{ github.sha }} \
-            -t us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-project:latest \
+            --cache-from=us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-proof-of-concept:latest \
+            -t us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-proof-of-concept:${{ github.sha }} \
+            -t us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-proof-of-concept:latest \
             .
 
       - name: Push
-        run: docker push --all-tags us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-project
+        run: docker push --all-tags us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-proof-of-concept
 
       - name: Deploy
         run: |
-          gcloud run services update tidepool-oscars-project \
-            --image=us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-project:${{ github.sha }} \
+          gcloud run services update tidepool-oscars-proof-of-concept \
+            --image=us-central1-docker.pkg.dev/bitly-tidepool-dev/tidepool-managed/oscars-proof-of-concept:${{ github.sha }} \
             --region=us-central1 \
             --project=bitly-tidepool-dev \
             --quiet

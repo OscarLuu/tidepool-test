@@ -149,12 +149,28 @@
         #clear-btn:hover {
             text-decoration: underline;
         }
+        .tab {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: var(--accent);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+        .tab:hover {
+            background: var(--accent-hover);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Hello, World!- 123</h1>
         <p>Welcome to Tidepool</p>
+        <a class="tab" href="/tictactoe">🎮 Play Tic-Tac-Toe</a>
     </div>
 
     <script>
