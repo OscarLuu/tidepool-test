@@ -12,11 +12,8 @@ func main() {
 		port = "8080"
 	}
 
-	http.Handle("/", http.FileServer(http.Dir(".")))
-
-	// Serve the tic-tac-toe game at a clean URL.
-	http.HandleFunc("/tictactoe", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "tic-tac-toe.html")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "index.html")
 	})
 
 	addr := ":" + port
